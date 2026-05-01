@@ -1,0 +1,537 @@
+# 🔬 MIDNIGHT NARRATIVE CONSTRUCTOR — Повний Аудит Проєкту (FINAL v2)
+
+> **Дата аудиту:** 24 квітня 2026  
+> **Джерело:** виключно реальний код з `c:\Users\Andrii\Desktop\ВізНовеллаНаТікток`  
+> **47 файлів проаналізовано двічі.** Всі помилки попередньої версії виправлені.
+
+---
+
+## 1. ЩО ТАКЕ ЦЕЙ ПРОЄКТ
+
+**Midnight Narrative Constructor** — веб-платформа для створення й програвання психологічних візуальних новел із вертикальним інтерфейсом. Два модулі:
+
+| Модуль | Маршрут | Призначення |
+|---|---|---|
+| **Studio (Конструктор)** | `/studio` | Автор створює/редагує сцени, біти, емоційні ваги |
+| **Player (Плеєр)** | `/`, `/player-test`, `/n/[slug]` | Гравець проживає новелу в реальному часі |
+
+**Технологічний стек:**
+- Next.js 15.3, React 19, TypeScript 5.8
+- Zustand 5 (стан, `subscribeWithSelector`, `persist`)
+- Framer Motion 12 (анімації переходів)
+- **GSAP 3.13** (CSS-property tweening в Bleeding UI v2 Provider)
+- Tailwind CSS 3.4 із кастомною CSS-системою "Bleeding UI"
+- Supabase (PostgreSQL, persistence), Radix UI Slider
+- Web Audio API (процедурний аудіо-дрон)
+
+---
+
+## 2. АРХІТЕКТУРА: ДВІ ПАРАЛЕЛЬНІ СИСТЕМИ
+
+> **⚠️ Це ключовий нюанс, пропущений у v1 аудиту.**
+
+У проєкті існують **дві паралельні інфраструктури** для емоційного движка:
+
+### Stack v1 — "Resonance" (активний у main app)
+Використовується на маршрутах `/`, `/studio`, `/player-test`, `/n/[slug]`.
+
+```
+lib/resonance/types.ts      → 3-осева модель (despair, panic, clarity)
+lib/resonance/theme.ts      → resolveBleedingTheme() → 10 CSS vars
+lib/resonance/beats.ts      → 5 demo-бітів
+lib/stores/useResonanceStore → Zustand, без persist
+lib/audio/AudioEngine.ts    → Web Audio drone
+components/providers/BleedingUIProvider.tsx → useLayoutEffect + direct CSS vars
+```
+
+### Stack v2 — "Emotional" (повністю написаний, є демо, але НЕ підключений до routes)
+Має свій store, provider, CSS, і demo-компонент, але жоден маршрут у `app/` його не імпортує.
+
+```
+lib/emotion/types.ts         → 6-осева модель (neutral, depression, panic, isolation, obsession, tenderness)
+lib/emotion/profiles.ts      → 6 EmotionalProfile (кольори + image + audio)
+lib/emotion/resolver.ts      → resolveEmotionalFrame() → 21 CSS vars + image + audio
+stores/use-emotional-store.ts → Zustand з persist (localStorage!) + history
+providers/bleeding-ui-provider.tsx → GSAP-based tweening + data-bleeding-ui attribute
+styles/bleeding-ui.css       → 21 CSS custom properties + vignette + grain + prefers-reduced-motion
+examples/midnight-shell-demo.tsx → Робоча demo з 4 бітами, enterScene/applyBeat
+```
+
+**Статус v2:** Код повністю функціональний — store зберігає стан у localStorage (`midnight-narrative-emotional-store`), provider анімує CSS через `gsap.to()`, CSS стилізує `[data-bleeding-ui]` елементи. Але **жодна сторінка в `app/`** не рендерить `MidnightShellDemo` чи `BleedingUIProvider` з v2. Це готова до інтеграції підсистема.
+
+---
+
+## 3. ПОВНА ІНВЕНТАРИЗАЦІЯ ФАЙЛІВ (47 штук)
+
+### 3.1. Маршрути (4 сторінки)
+
+| Маршрут | Файл | Stack | Що робить |
+|---|---|---|---|
+| `/` | `app/page.tsx` | v1 | Демо-новела через NightGate → PlayerRuntime |
+| `/studio` | `app/studio/page.tsx` | v1 | Конструктор: StudioLayout |
+| `/player-test` | `app/player-test/page.tsx` | v1 | Тестова сторінка плеєра |
+| `/n/[slug]` | `app/n/[slug]/page.tsx` | v1 | SSR: Supabase → PlayerRuntime |
+
+### 3.2. Компоненти
+
+#### Player (2 файли)
+| Компонент | Статус | Деталі |
+|---|---|---|
+| `NightGate.tsx` | ✅ Працює | Воротар за часом доби. Фази: daylight (lock) → dusk (lock) → night (enter). DevOverride. Ініціалізує audio. |
+| `PlayerRuntime.tsx` | ✅ Працює | Beat-based reader. Tap/click/Enter/Space → advance. HUD з emotional state. EmpathyCameraOverlay. |
+| `EmpathyCameraOverlay.tsx` | ✅ Візуальний | Fake камера: REC індикатор (пульсуюча анімація), рамки face-tracking, "Facial Sentiment Sampling". **Реальну камеру НЕ активує.** |
+
+#### Studio (7 файлів)
+| Компонент | Статус | Деталі |
+|---|---|---|
+| `StudioLayout.tsx` | ✅ | 3-колонковий grid: BeatList / BeatEditor / ResonancePanel + GhostOverlay + PublishButton |
+| `BeatList.tsx` | ✅ | Sidebar: список сцен і бітів, Add Scene, Add Beat, AI Generator кнопка |
+| `BeatEditor.tsx` | ✅ | Центральний редактор: title, speaker, text, musicCue, imagePrompt, audioPrompt, empathyCam toggle |
+| `ResonancePanel.tsx` | ✅ | 3 слайдери (despair/panic/clarity), "God Mode Preview" з live-рендером теми, JSON player payload |
+| `AIGeneratorModal.tsx` | ✅ Mock | Модалка PromptMaster: вставити текст → 2с delay → keyword-based beats generation |
+| `GhostOverlay.tsx` | ✅ | Тьюторіал: 6 кроків, highlight DOM елементів, AI/Manual mode, Apply AI Pass, Re-Seed Slice |
+| `PublishStoryButton.tsx` | ✅ (з Supabase) | "Publish To Archive" → server action → upsert → slug → `/n/[slug]` link |
+
+#### Providers (2 файли — ДВА РІЗНИХ!)
+| Файл | Stack | Механізм |
+|---|---|---|
+| `components/providers/BleedingUIProvider.tsx` | **v1** | `useLayoutEffect` → `document.documentElement.style.setProperty()` → 10 CSS vars |
+| `providers/bleeding-ui-provider.tsx` | **v2** | `gsap.to()` → 21 CSS vars, `data-bleeding-ui` attr, `syncTargets`, `prefers-reduced-motion`, `onFrameChange` callback |
+
+#### UI Примітиви (4 файли)
+| Компонент | Від чого залежить |
+|---|---|
+| `Button.tsx` | `cn()` (clsx + tailwind-merge) |
+| `Input.tsx` | `cn()` |
+| `Textarea.tsx` | `cn()` |
+| `Slider.tsx` | `@radix-ui/react-slider` |
+
+### 3.3. Stores (4 файли)
+
+| Store | Stack | Persist | Призначення |
+|---|---|---|---|
+| `useResonanceStore.ts` | v1 | ❌ RAM only | Beat index, emotional state (3-axis), audio init/mood |
+| `useEditorStore.ts` | v1 | ❌ RAM only | Draft story, selected scene/beat, CRUD операції |
+| `useGhostTutorialStore.ts` | v1 | ❌ RAM only | Ghost tutorial state: steps, mode, active |
+| `use-emotional-store.ts` | **v2** | ✅ **localStorage** | Emotional snapshot (6-axis), history (до 40 entries), resolvedFrame, scene/beat tracking |
+
+> **⚠️ ВАЖЛИВО:** `useEditorStore` і `useResonanceStore` **не мають persist**. Рефреш сторінки = **всі зміни в конструкторі і плеєрі v1 втрачені**. Тільки `useEmotionalStore` (v2) зберігає стан в localStorage.
+
+### 3.4. Lib Модулі
+
+#### Resonance Engine v1 (3 файли)
+| Файл | Що робить |
+|---|---|
+| `resonance/types.ts` | `EmotionalState` {despair, panic, clarity}, `ResonanceBeat`, `BleedingTheme` (10 полів), `AudioState`, `neutralEmotion` |
+| `resonance/theme.ts` | `resolveBleedingTheme()` — hex mixing, rgba, blur/softness calculation; `blendEmotion()` — інтерполяція (0.42/0.50/0.28) |
+| `resonance/beats.ts` | 5 hardcoded demo-бітів (threshold → reflection → voicemail → radiator → night-skin) |
+
+#### Emotion Engine v2 (3 файли)
+| Файл | Що робить |
+|---|---|
+| `emotion/types.ts` | 6 `EmotionId`, `EmotionVector`, `AuthorialOverride` (18 полів!), `EmotionalProfile`, payloads, `ResolvedEmotionalFrame` (21 CSS vars + image + audio), `EmotionalSnapshot` |
+| `emotion/profiles.ts` | 6 повних профілів з кольорами, image filters (saturation/brightness/contrast/blur/vignette/grain/glow), audio (gain/pitch/lowpass/reverb), transition timing, easing |
+| `emotion/resolver.ts` | `resolveEmotionalFrame()` — weighted blend всіх осей → CSS vars + image params + audio params; `accumulateResonance()` з decay (0.92, panic 0.88) |
+
+#### AI Pipeline (1 файл)
+| Файл | Що робить | Реальність |
+|---|---|---|
+| `ai/PromptMaster.ts` | Mock AI: split на речення → keyword scoring (12+12+11 слів) → resonanceWeights → hyper-prompts (image descriptors + audio descriptors) → speaker inference | **Fake.** 2с setTimeout. Жодного API call. |
+
+#### Audio Engine (1 файл)
+| Файл | Що робить | Реальність |
+|---|---|---|
+| `audio/AudioEngine.ts` | Web Audio API: 2 oscillators (triangle 61.5Hz + sine 92.25Hz), noise buffer (looped 2s), LFO (sine 0.07Hz) → lowpass filter (Q=0.8) → masterGain. `resolveAudioMood()` → gain, lowpassHz, detuneCents, noiseMix. LinearRamp transitions (1.4–1.8s). | **Реальний.** Працюючий процедурний drone. |
+
+#### Data (1 файл)
+| Файл | Що робить |
+|---|---|
+| `data/injectVerticalSlice.ts` | Вбудована демо-історія "False Morning / CloseAI Night Shift": 2 сцени, 10 бітів, повна emotional trajectory. `VERTICAL_SLICE_IDS` constants. Використовує `generateHyperPrompts()` для auto-fill промптів. |
+
+#### Night Gate (1 файл)
+| Файл | Що робить |
+|---|---|
+| `night/useDarknessStatus.ts` | Hook: `Date.getHours()` → daylight (6–18) / dusk (18–20) / night (20–6). Поллінг кожні 30с + visibilitychange. `NEXT_PUBLIC_NIGHT_GATE_OVERRIDE=true` → завжди night. |
+
+#### Supabase Layer (5 файлів)
+| Файл | Що робить |
+|---|---|
+| `supabase/config.ts` | `hasSupabaseConfig()` / `getSupabaseConfig()` — env vars |
+| `supabase/client.ts` | Browser Supabase client |
+| `supabase/server.ts` | Server Supabase client (no session persist) |
+| `supabase/types.ts` | Typed DB schema: novels, scenes, beats |
+| `supabase/story-persistence.ts` | `storyToPersistenceRows()` (story → DB rows) + `persistenceRowsToStory()` (DB → story) |
+
+#### Server Actions (1 файл)
+| Файл | Що робить |
+|---|---|
+| `actions/story.ts` | `saveStoryToCloud()`: slugify → resolveUniqueSlug → upsert novel → delete old scenes → insert scenes → insert beats → revalidatePath |
+
+#### Types (1 файл)
+| Файл | Що робить |
+|---|---|
+| `types/story.ts` | `Story`, `StoryScene`, `StoryBeat`, `StoryGlobalSettings`, `ResonanceWeights`. Factory: `createEmptyBeat()`, `createEmptyScene()`, `createEmptyStory()`. Converter: `storyToRuntimeBeats()`. |
+
+### 3.5. CSS / Config
+
+| Файл | Що робить |
+|---|---|
+| `app/globals.css` | Tailwind directives + v1 CSS vars (10 custom properties) + cinematic-shell/cinematic-copy classes + scanline overlay |
+| `styles/bleeding-ui.css` | **v2 CSS system:** 21 custom properties, `[data-bleeding-ui]` selector, vignette (inset box-shadow), grain (repeating linear gradient), blur (backdrop-filter), `prefers-reduced-motion` media query, `.midnight-shell__*` component classes |
+| `tailwind.config.ts` | Maps CSS vars to Tailwind tokens: `background`→`--bg-color`, `foreground`→`--text-color`, `accent`→`--ui-accent`, `panel`→`--panel-bg`, `border`→`--ui-border`. Custom `shadow-bleed` і `timing-bleed`. |
+| `next.config.ts` | `reactStrictMode: true`, fixed `generateBuildId: "midnight-narrative-constructor"` |
+| `scripts/ensure-next-build-id.mjs` | Post-build: записує BUILD_ID у `.next/BUILD_ID` |
+| `components.json` | shadcn/ui config (aliases, style "new-york") |
+
+### 3.6. SQL Schema (Supabase)
+
+```sql
+novels (id text PK, title, slug UNIQUE, created_at)
+  └── scenes (id text PK, novel_id FK CASCADE, title, order_index CHECK ≥0, UNIQUE(novel_id, order_index))
+        └── beats (id text PK, scene_id FK CASCADE, order_index, text, speaker, resonance_weights_json JSONB, hyper_prompts_json JSONB, UNIQUE(scene_id, order_index))
+```
+
+RLS: enabled, public read/write для `anon` і `authenticated` на всіх 3 таблицях.  
+Індекси: `scenes_novel_id_order_idx`, `beats_scene_id_order_idx`.
+
+### 3.7. Демо-контент
+
+**"False Morning / CloseAI Night Shift"** — 10 бітів у 2 сценах:
+
+| # | ID | Speaker | Despair | Panic | Clarity | EmpathyCam |
+|---|---|---|---|---|---|---|
+| 1 | coffee | Narrator | 0.19 | 0.07 | 0.82 | ❌ |
+| 2 | youtubeVideo | Narrator | 0.34 | 0.11 | 0.71 | ❌ |
+| 3 | youtubeComments | Protagonist | 0.82 | 0.18 | 0.28 | ❌ |
+| 4 | punishmentThought | Protagonist | 0.63 | 0.16 | 0.44 | ❌ |
+| 5 | shiftTransition | Narrator | 0.57 | 0.21 | 0.40 | ❌ |
+| 6 | dashboardLogin | CloseAI System | 0.68 | 0.27 | 0.31 | ❌ |
+| 7 | pokrovskyQueue | CloseAI System | 0.76 | 0.29 | 0.26 | ❌ |
+| 8 | empathyRec | CloseAI System | 0.73 | 0.35 | 0.24 | 🔴 |
+| 9 | firstLog | Protagonist | 0.88 | 0.38 | 0.18 | 🔴 |
+| 10 | secondLog | CloseAI System | 0.94 | 0.41 | 0.12 | 🔴 |
+
+**Ghost Tutorial:** 6 кроків, кожен з `rationale`, `manualGuidance`, `aiGuidance`, optional `aiResonanceWeights` + `aiAudioPrompt`.
+
+**v2 Demo (не в routes):** 4 beats у `examples/midnight-shell-demo.tsx`: door-locks (isolation), phone-vibrates (panic+obsession), empty-corridor (depression+isolation), voice-in-the-wall (obsession+panic з blur override).
+
+---
+
+## 4. РЕАЛІСТИЧНА СИМУЛЯЦІЯ: Автор у Конструкторі
+
+### 4.1. Запуск
+
+```bash
+npm run dev
+# http://localhost:3000/studio
+```
+
+### 4.2. Що на екрані
+
+Темний інтерфейс. CSS variables v1 застосовані глобально через `BleedingUIProvider` (v1). 
+
+**Заголовок:** "The Architect's Desk" → "Psychological Control Panel". Інфо: `2 scenes`, `10 beats`, `DOM-only live preview`. Кнопка **"Publish To Archive"**.
+
+**Три колонки (xl breakpoint: 320px / auto / 360px):**
+
+**🔧 ← "The Spine"** — BeatList:
+- 2 сцени з демо-даних: "False Morning" (5 бітів), "The Night Job" (5 бітів)
+- "Add Scene" — створює порожню сцену
+- "Dictate To AI (Mock)" — відкриває AIGeneratorModal
+- Кожний біт — кнопка. Вибір → завантаження в BeatEditor
+
+**✏️ ↔ "The Canvas"** — BeatEditor:
+- **Story Title** — `<Input>` (редагується, global)
+- **Speaker** — `<Input>` (per beat)
+- **Beat Text** — `<Textarea>` serif, min-h 18rem
+- **Music Cue Trigger** — `<Input>` (текстовий тег)
+- **Image Prompt** — `<Input>` (текстовий prompt)
+- **Audio Prompt** — `<Input>` (текстовий prompt)
+- **Empathy Camera** — toggle button ("Verification On/Off" + кольоровий dot)
+
+**📊 → "The Resonance Control"** — ResonancePanel:
+- 3 Radix UI слайдери: **Despair** (0–100%), **Panic** (0–100%), **Clarity** (0–100%)
+- **"God Mode Preview"** — `<div ref>` із `applyBleedingThemeToElement()`. Рухаєш слайдер → фон/акцент/тіні цього блоку змінюються live через CSS vars v1
+- **"Player Payload"** — `JSON.stringify(runtimeBeat)`: id, text, targetEmotion, microShift, requiresEmpathyCam
+
+**👻 ↘ "Ghost Agent"** — GhostOverlay (fixed bottom-right):
+- Активний при першому відкритті (isActive: true)
+- 6 кроків із підсвічуванням DOM-елементів (жовта рамка навколо target)
+- Переключатель **"Auto-Generate with AI" / "Craft Manually"**
+- **"Apply AI Pass"** — автоматично встановлює resonance weights + audio prompt для поточного кроку
+- **"Re-Seed Slice"** — перезавантажує демо-контент у store
+- Dot-nav + Back/Next + "Restart Tutorial"
+- "Dismiss" → мінімізує на кнопку "Summon Ghost"
+
+### 4.3. Що реально можна робити
+
+#### ✅ Повністю працює:
+
+1. **Клікнути на біт** → він виділяється, BeatEditor завантажує його дані
+2. **Редагувати текст біту** → textarea, миттєва зміна в Zustand
+3. **Змінити Speaker** → input
+4. **Переключити Empathy Camera** → boolean toggle, впливає на плеєр
+5. **Рухати слайдери Despair/Panic/Clarity** → "God Mode Preview" реактивно змінюється: фон, акцент, тіні, glow, blur, text-softness
+6. **Писати Image/Audio/Music Cue** → текстові поля, зберігаються в стані
+7. **"Add Scene"** → нова сцена із дефолтним бітом ("A silence waits here.", Narrator, despair 0.12, clarity 0.76)
+8. **"Add Beat"** → новий біт у вибраній сцені
+9. **"Dictate To AI (Mock)"** → модалка → вставити текст → "Generate Beats" → 2с timeout → keyword splitting → beats injected
+10. **Ghost Tutorial** → 6 кроків, AI Pass, Re-Seed
+11. **"Publish To Archive"** → (IF Supabase configured) → server action → upsert → slug → link `/n/slug`
+12. **Редагувати назву сцени** → input в BeatList header
+
+#### ⚠️ Працює, але з обмеженнями:
+
+| Функція | Обмеження |
+|---|---|
+| Image/Audio/Music Cue промпти | Зберігаються як текст, **ніде не рендеряться** — ні зображень, ні аудіо |
+| AI Generator | **Mock:** keyword-matching, НЕ LLM. Результати формульні, не інтелектуальні |
+| Publish | Потребує `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY`. Без них: error |
+| God Mode Preview | Показує зміну CSS для **одного** блоку, не для всього UI. Глобальний UI не змінюється від слайдерів |
+
+#### ❌ Відсутнє:
+
+| Feature | Деталь |
+|---|---|
+| **Drag & drop** | Не можна переупорядковувати біти чи сцени мишкою |
+| **Delete** | Немає кнопки видалення бітів чи сцен |
+| **Undo/Redo** | Немає |
+| **localStorage для Editor** | `useEditorStore` = RAM. Рефреш = **ВСІ ЗМІНИ ВТРАЧЕНІ** |
+| **Список новел** | Одна draft-новела в пам'яті. Немає project manager |
+| **Auth** | Supabase RLS = public read/write. Будь-хто пише/читає |
+| **Реальна AI генерація** | Немає API-конекту до GPT/Claude/інших |
+| **Image generation** | Промпти лежать як metadata |
+| **Audio playback з промптів** | Промпти лежать як metadata |
+| **Live preview плеєра** | Немає side-by-side preview в Studio |
+| **Branching** | Лінійна структура, без виборів/розгалужень |
+| **Scene settings** | `requiresEmpathyCam` на рівні сцени не редагується з UI |
+| **Global settings UI** | `ambienceProfile`, `defaultSpeaker`, `defaultMusicCueTrigger` — не мають UI-полів |
+| **v2 integration** | Emotion Engine v2 (6-axis, GSAP, localStorage) не підключений до routes |
+
+---
+
+## 5. РЕАЛІСТИЧНА СИМУЛЯЦІЯ: Гравець у Візуальній Новелі
+
+### 5.1. Night Gate
+
+Гравець відкриває `/` або `/n/slug`.
+
+| Час | Фаза | Що бачить | Може увійти? |
+|---|---|---|---|
+| 06:00–18:00 | `daylight` | "The outside world is too bright. Return when it disappears." | ❌ |
+| 18:00–20:00 | `dusk` | "Almost. Wait for the darkness." | ❌ |
+| 20:00–06:00 | `night` | "The night has accepted you. Put on your headphones." + кнопка **ENTER** | ✅ |
+
+Внизу: local time, phase, audio status. Анімація входу: opacity 0→1, y 16→0, blur 12→0px, 0.9s ease.
+
+### 5.2. Вхід
+
+Натискає **ENTER**:
+1. Кнопка → "Awakening"
+2. `AudioContext` creates: 2 oscillators + noise + LFO + filter → masterGain fade-in 0→0.055 за 1.8s
+3. NightGate зникає → PlayerRuntime рендериться
+
+### 5.3. Інтерфейс плеєра
+
+- **Повноекранний** (`min-h-dvh`), cursor pointer, click = advance
+- Radial gradient overlay (center = transparent, edges = rgba(0,0,0,0.34))
+- **HUD зверху** (11px uppercase, tracking 0.28em): Title | Beat X/Y | despair | panic | clarity | filter Hz | empathy cam
+- **Текст біту** (serif, clamp 2.4rem–5.2rem, tracking -0.042em) — центрований, з Framer Motion анімацією (fade+blur+y)
+- **Підказка знизу**: "tap anywhere to continue downward" / "read the line, then continue downward" (якщо EmpathyCam)
+- **Плашки**: "ui and audio are bleeding together" + optional "facial tracking overlay engaged"
+- **На останньому біті**: "the room has reached its final shape" + кнопка "BEGIN AGAIN"
+
+### 5.4. Beat-за-Beat-ом (Демо-Новела)
+
+Emotion blending формула: `next = current + (target - current) × weight + microShift`  
+despair @ 0.42, panic @ 0.50, clarity @ 0.28.  
+Audio: `resolveAudioMood()` → lowpass/gain/detune/noise рампуються за 1.4–1.8s.
+
+---
+
+**BEAT 1: Coffee** — target: d=0.19 p=0.07 c=0.82
+> *"The apartment brightens by habit, not by conviction. Coffee starts before thought does, and the morning still feels counterfeit."*
+
+| Параметр | Значення | Відчуття |
+|---|---|---|
+| Фон | ~#191a1c (ледь відхилення від neutral #1a1a1a) | Майже чистий |
+| Акцент | Тепле золото, ~#c1b39a | Невтральний спокій |
+| Blur | ~0.6px | Мінімальний |
+| Lowpass | ~5700Hz | Drone чистий |
+| Detune | ~-12 cents | Ледь знижений |
+| Емоція | Буденність. Фальшивий ранок. | |
+
+---
+
+**BEAT 2: YouTube Video** — target: d=0.34 p=0.11 c=0.71
+> *"On YouTube, Jeffrey's interrogation plays beside ads, reaction thumbnails, and a progress bar that makes catastrophe look punctual."*
+
+| Зміна | Деталь |
+|---|---|
+| Фон темніший | ~#17191c |
+| Акцент сіріє | ~#b5ab96 |
+| Blur | ~1.3px |
+| Lowpass | ~4900Hz |
+| Емоція | Дискомфорт. True crime як побутова рутина. |
+
+---
+
+**BEAT 3: YouTube Comments** — target: d=0.82 p=0.18 c=0.28
+> *"The comments flatten trauma into sport. They want punishment to feel clean, immediate, and public enough to count as morality."*
+
+| Зміна | Деталь |
+|---|---|
+| Фон | Різко темніший, ~#0f1114 |
+| Акцент | Холодний сталевий, ~#8a8d94 |
+| Blur | ~3.5px |
+| Text-softness | ~0.22em |
+| Lowpass | ~3100Hz (drone глухий) |
+| Detune | ~-55 cents |
+| Noise | помітний |
+| Емоція | **Перелом.** Цинізм digital spectacle. Система холоду фізично входить в інтерфейс. |
+
+---
+
+**BEAT 4: Punishment Thought** — target: d=0.63 p=0.16 c=0.44
+> *"You keep circling the same thought: punishment is easy to perform when nobody has to stay inside the wreckage after the cameras leave."*
+
+| Зміна | Деталь |
+|---|---|
+| Фон | Залишається темним |
+| Blur | ~3.0px (трохи спадає) |
+| Емоція | Рефлексія. Тихий гнів без виходу. |
+
+---
+
+**BEAT 5: Shift Transition** — target: d=0.57 p=0.21 c=0.40
+> *"By evening, the coffee taste is gone. By night, the same screen stops being leisure and becomes your other employer."*
+
+| Зміна | Деталь |
+|---|---|
+| Panic glow | Червоні обертони в glow починають з'являтися |
+| Noise mix | Підвищується |
+| Емоція | Момент перевертання. Екран = роботодавець. |
+
+---
+
+**BEAT 6: Dashboard Login** — target: d=0.68 p=0.27 c=0.31
+> *"CLOSEAI // Empathy Operations. Night shift confirmed. Camera status pending. Vocal warmth metrics will be sampled in real time."*
+
+| Зміна | Деталь |
+|---|---|
+| Фон | Глибокий чорний |
+| Panic акценти | Помітніші |
+| Lowpass | ~2700Hz |
+| Detune | ~-65 cents |
+| Емоція | Корпоративна машина. Холодна формальність. |
+
+---
+
+**BEAT 7: Pokrovsky Queue** — target: d=0.76 p=0.29 c=0.26
+> *"Queue item: CloseAI user Andriy Pokrovsky. Flagged for escalating isolation, recurrent abandonment language, manual empathy verification required."*
+
+| Зміна | Деталь |
+|---|---|
+| Despair | Наростає. UI в стані "заморозки". |
+| Емоція | **Шок впізнавання.** Гравець бачить ім'я як "queue item". |
+
+---
+
+**BEAT 8: Empathy REC** 🔴 — target: d=0.73 p=0.35 c=0.24  
+`requiresEmpathyCam: true`
+
+> *"A red point wakes at the edge of the display. REC // Empathy Verification Active. Read aloud."*
+
+**🔴 EmpathyCameraOverlay з'являється:**
+- Повноекранний зовнішній фрейм: `border border-white/10`, rounded 2.4rem
+- Лівий фрейм обличчя: `18% × 18%`, top-left area
+- Правий фрейм обличчя: `21% × 22%`, top-right area  
+- Центральна зона: `inset-x 22%, top 23%, h 48%` — `border-rose-500/12` + radial gradient
+- **Top-left badge**: пульсуючий червоний dot (`animate opacity 0.35→1→0.35, scale 0.95→1.08→0.95, 1.25s loop`) + "REC // Empathy Verification Active. Read aloud."
+- **Bottom-right badge**: "Facial Sentiment Sampling"
+
+HUD додає: `empathy cam armed`. Підказка: **"read the line, then continue downward"**.
+
+> **РЕАЛЬНА КАМЕРА НЕ АКТИВУЄТЬСЯ.** Весь overlay = CSS + Framer Motion. Жодного `getUserMedia()` чи `MediaDevices` API.
+
+---
+
+**BEAT 9: First Log** 🔴 — target: d=0.88 p=0.38 c=0.18
+
+> *"'I think the system only notices me when I describe my pain in a format it can count.' You read Andriy Pokrovsky's log back to the company in the tone the company requested."*
+
+| Зміна | Деталь |
+|---|---|
+| Blur | ~5px |
+| Text-softness | ~0.30em |
+| Lowpass | <2200Hz |
+| Камера | Залишається active |
+| Емоція | Ти читаєш чужий біль вголос. Система оцінює паузи. |
+
+---
+
+**BEAT 10: Second Log (ФІНАЛ)** 🔴 — target: d=0.94 p=0.41 c=0.12
+
+> *"The software scores your pauses, your breath, the softness at the end of each sentence, then asks whether you can sound more human without feeling any of it."*
+
+| Параметр | Приблизне значення |
+|---|---|
+| Фон | ~#0a0c0f |
+| Blur | ~5.8px |
+| Text-softness | ~0.36em |
+| Glow | Рожевий відтінок (panic × 0.4) |
+| Lowpass | <1800Hz |
+| Detune | ~-85 cents |
+| Noise | На максимумі (~0.06) |
+
+**Фінальний напис:** "the room has reached its final shape"  
+**Кнопка:** "BEGIN AGAIN" → `resetSequence()` → index=0, emotion=neutral, audio resets
+
+---
+
+## 6. ВЕРДИКТ
+
+### ✅ Що працює як цілісний продукт
+
+| Система | Деталь |
+|---|---|
+| Beat-based Player | Tap to advance, HUD, emotional state tracking, keyboard support |
+| Bleeding UI v1 | 10 CSS vars, live reaction to EmotionalState через useLayoutEffect |
+| Web Audio Drone | Реальний процедурний синтезатор, реагує на emotions |
+| Night Gate | Time-based lock (daylight/dusk/night) + developer override |
+| Empathy Camera Overlay | Візуальний театр face-tracking (fake, без реальної камери) |
+| Constructor (Studio) | CRUD for beats, scenes; text, speaker, resonance, prompts, empathyCam |
+| Ghost Tutorial | 6 кроків, AI/Manual, highlight targeting, Apply AI Pass, Re-Seed |
+| PromptMaster | Keyword-based text→beats pipeline (mock, але функціональний) |
+| Supabase Persistence | Schema + server actions + dynamic routes + slug generation |
+| Demo Novella | 10 бітів, повна емоційна arc від routine → dehumanization |
+
+### 🟡 Написано, але не інтегровано в production routes
+
+| Система | Деталь |
+|---|---|
+| Emotion Engine v2 | 6 осей, 6 профілів, weighted blending, CSS vars (21), image+audio params |
+| Emotional Store v2 | Zustand з **localStorage persist**, history tracking (до 40 entries) |
+| Bleeding UI Provider v2 | **GSAP-based** CSS tweening, `data-bleeding-ui`, syncTargets, prefers-reduced-motion |
+| Bleeding UI CSS v2 | 21 кастомних властивостей, vignette, grain, blur, responsive media queries |
+| MidnightShellDemo | 4-beat working demo з v2 stack |
+
+### ❌ Відсутнє
+
+| Feature | Критичність |
+|---|---|
+| Реальна LLM інтеграція | 🔴 Критично для AI функцій |
+| Генерація/відтворення зображень | 🔴 Image prompts — мертвий текст |
+| Генерація/відтворення аудіо з промптів | 🔴 Audio prompts — мертвий текст |
+| Music cue triggering | 🟡 Теги є, але без audio routing |
+| Branching / choices | 🔴 Лінійна структура |
+| Auth / мультитенантність | 🔴 Public read/write для всіх |
+| Editor localStorage persist | 🔴 Рефреш = втрата всіх змін конструктора |
+| Delete beats/scenes | 🟡 Тільки add, не delete |
+| Drag & drop reorder | 🟡 Порядок фіксований |
+| Undo/Redo | 🟡 Немає |
+| Multi-project manager | 🟡 Одна draft-новела |
+| Live player preview в Studio | 🟡 Тільки "God Mode Preview" блок |
+| Mobile-specific layout | 🟡 Не протестовано |
+| v2 Engine підключення | 🟡 Код готовий, треба замінити в routes |
+| TikTok відео export | 🔴 Немає рендерінгу відео |
