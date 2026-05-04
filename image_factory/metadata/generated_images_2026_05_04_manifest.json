@@ -1,0 +1,490 @@
+﻿{
+    "generated_at":  "2026-05-04T22:47:23.3663763+01:00",
+    "source_directory":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55",
+    "output_directory":  "image_factory\\finals\\generated_2026_05_04",
+    "generation_surface":  "Codex built-in image generation; no OpenAI API pipeline",
+    "total_images":  51,
+    "sequences":  [
+                      {
+                          "id":  "raven_alley_10f_v1",
+                          "frames":  10,
+                          "note":  "Initial raven alley sequential pass"
+                      },
+                      {
+                          "id":  "raven_alley_10f_v2_seed",
+                          "frames":  1,
+                          "note":  "Single v2 seed master plate"
+                      },
+                      {
+                          "id":  "raven_alley_20f_v2",
+                          "frames":  20,
+                          "note":  "Monochrome raven alley continuation frames 01-20"
+                      },
+                      {
+                          "id":  "black_conservatory_20f",
+                          "frames":  20,
+                          "note":  "New black conservatory sequence frames 01-20"
+                      }
+                  ],
+    "assets":  [
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 01",
+                       "frame_index":  1,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_01.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f78eb178588191aa59657a42fc080e.png",
+                       "source_last_write_time":  "2026-05-03T20:07:56.0840104+01:00",
+                       "bytes":  2696046
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 02",
+                       "frame_index":  2,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_02.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f78ef93c3081918c8db9faf534a619.png",
+                       "source_last_write_time":  "2026-05-03T20:09:09.3677980+01:00",
+                       "bytes":  2666224
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 03",
+                       "frame_index":  3,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_03.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f78f38edac8191aa79ac45ac221a35.png",
+                       "source_last_write_time":  "2026-05-03T20:10:18.7142174+01:00",
+                       "bytes":  2714719
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 04",
+                       "frame_index":  4,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_04.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f78f7ff44481919cb6bdd2284881d2.png",
+                       "source_last_write_time":  "2026-05-03T20:11:20.7428286+01:00",
+                       "bytes":  2456864
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 05",
+                       "frame_index":  5,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_05.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f78fbd18688191938e52ac6953d127.png",
+                       "source_last_write_time":  "2026-05-03T20:12:23.2733659+01:00",
+                       "bytes":  2566573
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 06",
+                       "frame_index":  6,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_06.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f78ffc28548191b924c2830b9865e1.png",
+                       "source_last_write_time":  "2026-05-03T20:13:28.6278331+01:00",
+                       "bytes":  2473274
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 07",
+                       "frame_index":  7,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_07.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7903c4790819184fbd43953548e82.png",
+                       "source_last_write_time":  "2026-05-03T20:15:39.1890946+01:00",
+                       "bytes":  2375530
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 08",
+                       "frame_index":  8,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_08.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f790bf371c8191b5e0c2f33b8a65bc.png",
+                       "source_last_write_time":  "2026-05-03T20:16:41.3613694+01:00",
+                       "bytes":  2478431
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 09",
+                       "frame_index":  9,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_09.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f790fd2d208191bcf7922873b4c881.png",
+                       "source_last_write_time":  "2026-05-03T20:17:46.0323652+01:00",
+                       "bytes":  2713053
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v1",
+                       "label":  "raven alley 10f v1 frame 10",
+                       "frame_index":  10,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v1\\raven_alley_10f_v1_frame_10.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7913e217881918f0afb7c5857906e.png",
+                       "source_last_write_time":  "2026-05-03T20:18:58.8205262+01:00",
+                       "bytes":  2376825
+                   },
+                   {
+                       "sequence":  "raven_alley_10f_v2_seed",
+                       "label":  "raven alley 10f v2 seed master plate",
+                       "frame_index":  11,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_10f_v2_seed\\raven_alley_10f_v2_seed_frame_01_master_plate.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f79a9b5748819199a3e35101e6e247.png",
+                       "source_last_write_time":  "2026-05-03T21:00:48.0882836+01:00",
+                       "bytes":  2685743
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 01",
+                       "frame_index":  12,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_01.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7addb0fb881919d0c1959af4f0650.png",
+                       "source_last_write_time":  "2026-05-03T22:22:27.5057783+01:00",
+                       "bytes":  2614233
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 02",
+                       "frame_index":  13,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_02.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7ae76910081919dbc400a376f6748.png",
+                       "source_last_write_time":  "2026-05-03T22:24:02.1618397+01:00",
+                       "bytes":  2355044
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 03",
+                       "frame_index":  14,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_03.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7af2020e88191859bb663d899e411.png",
+                       "source_last_write_time":  "2026-05-03T22:26:59.2899826+01:00",
+                       "bytes":  2504433
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 04",
+                       "frame_index":  15,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_04.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7af86b2e081919d521245139d7a0f.png",
+                       "source_last_write_time":  "2026-05-03T22:29:09.2969984+01:00",
+                       "bytes":  2496341
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 05",
+                       "frame_index":  16,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_05.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7b0a96ca08191a91347bcc5a8416a.png",
+                       "source_last_write_time":  "2026-05-03T22:33:26.2053382+01:00",
+                       "bytes":  2463972
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 06",
+                       "frame_index":  17,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_06.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7b10cdc2c819180c4e251c60bf082.png",
+                       "source_last_write_time":  "2026-05-03T22:35:14.3780870+01:00",
+                       "bytes":  2376133
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 07",
+                       "frame_index":  18,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_07.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7b21d2b948191a326094a30aae972.png",
+                       "source_last_write_time":  "2026-05-03T22:39:39.2165495+01:00",
+                       "bytes":  2363841
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 08",
+                       "frame_index":  19,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_08.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7b27de66c81918ada42c2b86d099d.png",
+                       "source_last_write_time":  "2026-05-03T22:41:16.9232220+01:00",
+                       "bytes":  2344605
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 09",
+                       "frame_index":  20,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_09.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7b2df5f548191bf5309abda4fe438.png",
+                       "source_last_write_time":  "2026-05-03T22:43:24.8568733+01:00",
+                       "bytes":  2543665
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 10",
+                       "frame_index":  21,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_10.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7b35fb7008191ac810b16deda8c3e.png",
+                       "source_last_write_time":  "2026-05-03T22:46:21.7487469+01:00",
+                       "bytes":  2514820
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 11",
+                       "frame_index":  22,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_11.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bc58b94c81918700c6004af3c831.png",
+                       "source_last_write_time":  "2026-05-03T23:23:14.5960453+01:00",
+                       "bytes":  2456695
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 12",
+                       "frame_index":  23,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_12.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bcb4fcb08191bb3711bccfd80900.png",
+                       "source_last_write_time":  "2026-05-03T23:24:41.1707889+01:00",
+                       "bytes":  2418822
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 13",
+                       "frame_index":  24,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_13.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bd0c727c8191bebc322e2790bc2f.png",
+                       "source_last_write_time":  "2026-05-03T23:26:27.8459601+01:00",
+                       "bytes":  2478666
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 14",
+                       "frame_index":  25,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_14.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bd7727648191b2f5d83cf5f1a98e.png",
+                       "source_last_write_time":  "2026-05-03T23:28:02.1155889+01:00",
+                       "bytes":  2434335
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 15",
+                       "frame_index":  26,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_15.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bdd5390c8191b0075c88a1a34e10.png",
+                       "source_last_write_time":  "2026-05-03T23:29:35.8549432+01:00",
+                       "bytes":  2545057
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 16",
+                       "frame_index":  27,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_16.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7be93521c81918f183c20a3893df6.png",
+                       "source_last_write_time":  "2026-05-03T23:32:34.1831440+01:00",
+                       "bytes":  2137888
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 17",
+                       "frame_index":  28,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_17.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bee5cd3c8191b7b573bbdfc4c9fc.png",
+                       "source_last_write_time":  "2026-05-03T23:34:09.1226183+01:00",
+                       "bytes":  2378717
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 18",
+                       "frame_index":  29,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_18.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bf44aadc8191b22e9540fd823610.png",
+                       "source_last_write_time":  "2026-05-03T23:35:48.4320672+01:00",
+                       "bytes":  2325845
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 19",
+                       "frame_index":  30,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_19.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7bfa7e1c48191989d7c65919e4c93.png",
+                       "source_last_write_time":  "2026-05-03T23:37:30.5390266+01:00",
+                       "bytes":  2576708
+                   },
+                   {
+                       "sequence":  "raven_alley_20f_v2",
+                       "label":  "raven alley 20f v2 frame 20",
+                       "frame_index":  31,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\raven_alley_20f_v2\\raven_alley_20f_v2_frame_20.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7c106638c8191953851f65e14596d.png",
+                       "source_last_write_time":  "2026-05-03T23:43:26.3470356+01:00",
+                       "bytes":  2439796
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 01",
+                       "frame_index":  32,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_01.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7db6796648191a7d302b861a10772.png",
+                       "source_last_write_time":  "2026-05-04T01:35:51.1335875+01:00",
+                       "bytes":  2332086
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 02",
+                       "frame_index":  33,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_02.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7dbcabd808191899e13fc0660e34b.png",
+                       "source_last_write_time":  "2026-05-04T01:37:27.1036279+01:00",
+                       "bytes":  2514660
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 03",
+                       "frame_index":  34,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_03.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7dc2a7df88191b5f466c4d883cc5c.png",
+                       "source_last_write_time":  "2026-05-04T01:39:09.8871145+01:00",
+                       "bytes":  2638256
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 04",
+                       "frame_index":  35,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_04.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7dd0c4e6c8191b7204c5c2495e786.png",
+                       "source_last_write_time":  "2026-05-04T01:42:43.5762786+01:00",
+                       "bytes":  2196194
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 05",
+                       "frame_index":  36,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_05.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7dd67375881918de3031845c279a4.png",
+                       "source_last_write_time":  "2026-05-04T01:44:27.2936976+01:00",
+                       "bytes":  2576666
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 06",
+                       "frame_index":  37,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_06.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7ddceb43081919712ad259558d60f.png",
+                       "source_last_write_time":  "2026-05-04T01:46:13.3669931+01:00",
+                       "bytes":  2198882
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 07",
+                       "frame_index":  38,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_07.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7de391cc88191b1b9babb80baab26.png",
+                       "source_last_write_time":  "2026-05-04T01:47:48.7783276+01:00",
+                       "bytes":  2245031
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 08",
+                       "frame_index":  39,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_08.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7de9870c08191bc4445f080df6c53.png",
+                       "source_last_write_time":  "2026-05-04T01:49:17.9785492+01:00",
+                       "bytes":  2356513
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 09",
+                       "frame_index":  40,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_09.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7def18e488191b1485fb1c2ebdbf6.png",
+                       "source_last_write_time":  "2026-05-04T01:50:46.8452996+01:00",
+                       "bytes":  1995574
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 10",
+                       "frame_index":  41,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_10.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7dffd99e48191926ab4e98bd73ce1.png",
+                       "source_last_write_time":  "2026-05-04T01:55:42.5152271+01:00",
+                       "bytes":  2587624
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 11",
+                       "frame_index":  42,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_11.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e071fff081918b72d8bc3ae4d263.png",
+                       "source_last_write_time":  "2026-05-04T01:57:11.0569875+01:00",
+                       "bytes":  2821813
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 12",
+                       "frame_index":  43,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_12.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e1769a088191833a199cf645d3e1.png",
+                       "source_last_write_time":  "2026-05-04T02:01:46.2068633+01:00",
+                       "bytes":  2227349
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 13",
+                       "frame_index":  44,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_13.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e1defc4881919e1d5be8c1684ed9.png",
+                       "source_last_write_time":  "2026-05-04T02:03:29.2839109+01:00",
+                       "bytes":  2705685
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 14",
+                       "frame_index":  45,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_14.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e2449ea08191ad9d7a2b14ec53ef.png",
+                       "source_last_write_time":  "2026-05-04T02:05:14.8227989+01:00",
+                       "bytes":  2616622
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 15",
+                       "frame_index":  46,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_15.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e2ae158c8191bb2059b8e1421780.png",
+                       "source_last_write_time":  "2026-05-04T02:06:47.8551451+01:00",
+                       "bytes":  2458677
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 16",
+                       "frame_index":  47,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_16.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e30b6ad481919b8b73e506479322.png",
+                       "source_last_write_time":  "2026-05-04T02:08:24.6039208+01:00",
+                       "bytes":  2425352
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 17",
+                       "frame_index":  48,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_17.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e36c25f88191969c8271d1cef4c8.png",
+                       "source_last_write_time":  "2026-05-04T02:10:12.1950845+01:00",
+                       "bytes":  2356169
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 18",
+                       "frame_index":  49,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_18.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e3d7e8388191941dcb8aa3cfdc05.png",
+                       "source_last_write_time":  "2026-05-04T02:11:52.3223878+01:00",
+                       "bytes":  2534072
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 19",
+                       "frame_index":  50,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_19.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e4f0ea8c8191a652d14d9f2cdddd.png",
+                       "source_last_write_time":  "2026-05-04T02:16:31.3096767+01:00",
+                       "bytes":  2705960
+                   },
+                   {
+                       "sequence":  "black_conservatory_20f",
+                       "label":  "black conservatory 20f frame 20",
+                       "frame_index":  51,
+                       "workspace_path":  "image_factory\\finals\\generated_2026_05_04\\black_conservatory_20f\\black_conservatory_20f_frame_20.png",
+                       "source_path":  "C:\\Users\\Andrii\\.codex\\generated_images\\019def26-a2e4-7f72-8019-c102ca057a55\\ig_059ace8bf5765e100169f7e5529918819191cd5564a261c96e.png",
+                       "source_last_write_time":  "2026-05-04T02:18:18.8568654+01:00",
+                       "bytes":  2400814
+                   }
+               ]
+}
