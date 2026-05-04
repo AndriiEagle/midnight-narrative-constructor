@@ -1,0 +1,50 @@
+style_id: raven_noir_zurich_winterthur_elf_v1
+project: midnight-narrative-constructor
+pipeline: codex_only_no_openai_api
+status: active_style_direction
+
+reference_images:
+  - image_factory/reference_images/raven_sequence_v2/raven_sequence_v2_frame_01.png
+  - image_factory/reference_images/raven_sequence_v2/raven_sequence_v2_frame_02.png
+  - image_factory/reference_images/raven_sequence_v2/raven_sequence_v2_frame_03.png
+
+location_language:
+  primary: fictional Elf town with Zurich/Winterthur visual DNA
+  allowed_real_world_influence:
+    - Zurich old-town rain alleys
+    - Winterthur industrial brick passages
+    - Swiss narrow lanes, wet stone, restrained street lighting
+  forbidden:
+    - New York fire-escape cliche unless explicitly redesigned as Swiss industrial stairs
+    - fantasy village whimsy
+    - generic cyberpunk city
+    - readable signs or real addresses
+
+visual_style:
+  format: widescreen visual novel CG
+  aspect_ratio: 16:9
+  resolution_family: 1672x941 reference, scalable to 1536x864 or 1920x1080
+  rendering: cinematic hyperreal rain-noir
+  palette:
+    base: black, graphite, wet charcoal, cold silver rain
+    accents: tiny violet raven eye, restrained amber window/eye reflection
+  contrast: very high, but silhouettes must remain readable
+  texture: wet masonry, rain streaks, reflective cobblestone, glossy black feathers
+  camera: physically plausible lens and perspective, no impossible spatial jumps
+
+core_motifs:
+  - black raven with small violet eye accent
+  - rain-heavy alley
+  - dark window with exterior blinds
+  - amber eye/light behind blinds
+  - distant human silhouette in alley
+  - wet stone ledge or sill that exists from frame 01 onward
+
+hard_rules:
+  - Every object used in a later frame must be visible, implied, or physically seeded in earlier frames.
+  - The raven cannot land on a perch that did not exist in the previous geography.
+  - Window, blinds, ledge, alley axis, streetlamp, and distant silhouette must keep consistent spatial relationships.
+  - Camera can move, but it must behave like a real camera: dolly, pan, push-in, or reverse angle with continuity anchors.
+  - Do not invent new walls, windows, perches, or architecture between frames unless the camera reveal makes them physically plausible.
+  - No readable text, logos, signage, or fake UI.
+  - No surreal bird scale changes: raven remains a real large raven, not monster-sized.

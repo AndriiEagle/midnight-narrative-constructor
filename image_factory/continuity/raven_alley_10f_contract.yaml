@@ -1,0 +1,198 @@
+contract_id: raven_alley_10f_physical_continuity_v1
+status: superseded
+superseded_by: image_factory/continuity/raven_alley_10f_v2_contract.yaml
+superseded_reason: >
+  V1 produced strong rain-noir style but still allowed too much set drift:
+  D1 changed character in later frames, S1 became an oversized new set-piece,
+  T1 sometimes read as a decorative cable, C1 became too jewel-like, and the
+  reverse angle remained vulnerable to mirrored geometry. V2 uses one master
+  continuity plate plus small edit-like camera movements.
+purpose: >
+  Lock a physically coherent ten-frame Codex-only rain-noir visual novel CG
+  sequence so generation cannot invent new ledges, doors, lamps, windows,
+  figures, pipes, perches, light sources, or clue props between frames.
+
+pipeline:
+  generation: codex_built_in_image_generation_only
+  forbidden:
+    - openai_api
+    - image_api
+    - responses_api
+    - batch_api
+    - sdk_wrappers
+    - queue_runners
+    - openai_api_key
+
+scene:
+  asset_family: raven_alley_10f_sequence
+  format: widescreen_visual_novel_cg
+  aspect_ratio: "16:9"
+  location: fictional Elf town with Zurich old-town and Winterthur industrial restraint
+  time: night
+  weather: heavy rain
+  style: cinematic hyperreal dark Swiss rain-noir
+  palette_rule:
+    monochrome_ratio: "65-70%"
+    color_ratio: "30-35%"
+    color_policy: >
+      Color must identify story-relevant physical sources only: violet raven
+      eye, amber blinds or door slit, red thread, yellow lamp reflection,
+      cold-blue glass shard.
+
+fixed_location_map:
+  orientation:
+    camera_home: south alley mouth
+    view_axis: looking north into alley depth
+    right_facade: east wall, dominant continuity wall
+    left_wall: west wall, deep lamp wall
+    ground_plane: continuous wet cobblestone with center gutter and shallow right curb
+  coordinates:
+    y_3_8:
+      right_facade: [W1, B1, L1, P1]
+      living_element: R1 starts on L1
+    y_3_9:
+      right_facade: T1 begins at nail N1 under L1 and drops down the wall seam
+    y_8_8:
+      ground: C1 small cold-blue glass shard in center gutter near D1
+    y_9_2:
+      right_facade: [D1, H1]
+    y_21_5:
+      left_wall: [S1]
+      deep_alley: F1 small human silhouette under or near S1
+
+stable_objects:
+  W1:
+    type: dark rectangular window
+    position: east/right facade at y_3_8
+    rule: present from frame_01 onward, even if cropped or reflected
+  B1:
+    type: exterior horizontal blinds on W1
+    rule: same slat direction, same wall, same window; no second hero blind source
+  L1:
+    type: wet stone ledge directly below W1
+    dimensions: shallow masonry sill, about 20-25 cm projection
+    function: legal primary raven perch
+    rule: visible in frame_01 and never replaced by a new block or sill
+  P1:
+    type: old vertical drainpipe beside W1
+    rule: fixed right-facade vertical anchor
+  N1:
+    type: small nail under L1
+    function: physical origin point for T1
+    rule: visible or implied whenever T1 origin is shown
+  D1:
+    type: dark arched service door
+    position: east/right facade at y_9_2, farther down the same wall as W1
+    rule: seeded in frame_01; never moves to the opposite wall
+  H1:
+    type: low iron ring on D1
+    function: physical endpoint loop for T1
+    rule: appears with D1; no alternate handle replaces it
+  T1:
+    type: thin wet red thread
+    route: N1 under L1 -> right wall seam -> wet right curb -> D1 door crack -> loop around H1
+    function: physical clue tying W1/L1 to D1/H1
+    rule: must remain traceable; never floats freely through the air
+  C1:
+    type: small cold-blue glass shard
+    position: center gutter near D1 threshold at y_8_8
+    function: cold clue and reflection pivot
+    rule: present from frame_01 as tiny glint; never becomes a magic object
+  S1:
+    type: restrained old Swiss wall-mounted streetlamp on iron bracket
+    position: west/left wall at y_21_5
+    function: yellow depth ruler, rain backlight, legal temporary raven perch
+    rule: stays wall-mounted; never becomes a freestanding streetlamp
+  F1:
+    type: small anonymous human silhouette
+    position: under or slightly beyond S1 on alley axis
+    motion_rule: may shift subtly along the axis only; no teleporting or face reveal
+  R1:
+    type: realistic black raven
+    scale: plausible large raven, never monster-sized
+    legal_positions:
+      - perched on L1
+      - launching from L1
+      - crossing the alley between L1 and S1
+      - perched on S1 bracket after S1 has been clearly visible
+      - returning from S1 toward L1
+      - reflected in W1, puddles, or C1 when the real bird remains locatable
+    forbidden:
+      - second raven
+      - flock
+      - fantasy monster bird
+      - unseeded new perch
+
+color_sources:
+  violet:
+    source: tiny catchlight in R1 eye
+    meaning: living witness
+  amber:
+    source: narrow practical light behind B1 and later a subtle D1 keyhole or under-door slit
+    meaning: hidden human presence
+  red:
+    source: T1 only
+    meaning: causal path from window ledge to door
+  yellow:
+    source: S1 and its wet cobblestone reflection
+    meaning: distance ruler and silhouette backlight
+  blue:
+    source: C1 only, with possible reflected cold glint near D1
+    meaning: cold evidence
+
+camera_path:
+  frame_01: wide establishing map from south alley mouth
+  frame_02: controlled push-in to W1/L1
+  frame_03: dynamic launch from L1 toward S1, while W1/B1/L1 remain visible
+  frame_04: mid-alley tracking bridge near D1, carrying W1 behind and S1 ahead
+  frame_05: low angle at S1 bracket after the raven arrives
+  frame_06: ground-level puddle and gutter map under S1, tracing T1 back toward D1
+  frame_07: tracking arrival at D1/H1 along T1
+  frame_08: tight D1/H1/keyhole resonance close-up, no new props
+  frame_09: anchored reverse from beside D1 back toward W1/L1; no mirrored map
+  frame_10: final low closer tableau at original W1/L1 zone
+
+frame_requirements:
+  frame_01:
+    must_show: [W1, B1, L1, P1, N1, T1, D1, H1, C1, S1, F1, R1]
+    action: establish all future objects and light sources
+  frame_02:
+    must_show: [W1, B1, L1, P1, N1, T1, D1, S1, F1, R1]
+    action: prove L1 as real physical raven perch
+  frame_03:
+    must_show: [W1, B1, L1, P1, T1, D1, H1, S1, F1, R1]
+    action: R1 launches from exact L1 toward S1
+  frame_04:
+    must_show: [W1, L1, T1, D1, H1, S1, F1, R1]
+    action: camera tracks mid-alley while all anchor positions remain coherent
+  frame_05:
+    must_show: [S1, R1, F1, D1, H1, T1, W1, L1]
+    action: R1 perches on S1 bracket, already established as wall-mounted
+  frame_06:
+    must_show: [S1, R1_reflection, F1_reflection, T1, C1, D1_reflection, W1_reflection]
+    action: puddle and gutter prove physical route and depth axis
+  frame_07:
+    must_show: [D1, H1, T1, C1, W1, L1, S1, R1, F1]
+    action: reveal T1 looping around H1 after rising along D1 door crack
+  frame_08:
+    must_show: [D1, H1, T1, C1]
+    may_show_as_reflection: [B1, amber_slats]
+    action: close-up of threshold tension without introducing a new character or prop
+  frame_09:
+    must_show: [D1, H1, T1, W1, B1, L1, S1, F1, R1]
+    action: anchored reverse angle back to W1/L1 while R1 returns from S1
+  frame_10:
+    must_show: [W1, B1, L1, P1, N1, T1, D1, H1, C1, S1, F1, R1]
+    action: final continuity tableau with R1 back on exact L1
+
+qa_fail_conditions:
+  - L1 is absent or unclear in frame_01, frame_02, frame_03, or frame_10
+  - T1 does not follow N1 -> wall seam -> right curb -> D1 crack -> H1
+  - D1 appears on the left/opposite wall or first appears after frame_01
+  - S1 changes from wall-mounted bracket lamp to freestanding lamp
+  - R1 changes scale implausibly or lands on an unseeded perch
+  - F1 becomes a close face reveal or gains weapon/readable clothing marks
+  - C1 becomes a magical glow, note, symbol, or new narrative object
+  - reflections introduce unseeded architecture, characters, props, or text
+  - any new major window, door, ledge, lamp, pipe, stone block, figure, perch, or light source appears
+  - scene drifts into cyberpunk neon, cute fantasy village, gore, weapons, readable text, logo, or watermark

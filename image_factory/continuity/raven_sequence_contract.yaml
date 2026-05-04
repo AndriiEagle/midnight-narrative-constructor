@@ -1,0 +1,59 @@
+contract_id: raven_sequence_physical_continuity_v1
+status: active
+purpose: Prevent frame-to-frame hallucination in Codex-generated VN CG sequences.
+
+sequence_setting:
+  location: fictional Elf town, with Zurich/Winterthur rain-noir architecture
+  time: night
+  weather: heavy rain
+  street_layout:
+    alley_axis: deep corridor receding from foreground window wall toward distant streetlamp
+    ground: wet cobblestone or old stone pavement, physically continuous across all frames
+    left_wall: dark wet masonry, vertical drain pipes allowed
+    right_wall: building facade with one dark window and exterior slatted blinds
+
+fixed_geometry:
+  window:
+    position: right side of alley wall
+    type: dark rectangular window with exterior horizontal blinds
+    visibility_rule: present from frame 01, even if partly cropped or secondary
+    interior_light: narrow amber glow behind slats
+  ledge:
+    type: wet stone window ledge / masonry sill directly below the same window
+    visibility_rule: must be visible or clearly implied from frame 01
+    function: physical perch used by raven in frames 02 and 03
+    forbidden: do not create a new freestanding block, random pedestal, or impossible perch in frame 03
+  streetlamp:
+    position: deep alley center-left
+    role: backlight for rain and distant figure
+    continuity_rule: same lamp position and reflection line across frames
+  distant_figure:
+    position: far alley, under or near lamp axis
+    scale: small human silhouette
+    continuity_rule: can move slightly forward/back, but cannot teleport or change scale unrealistically
+
+raven_motion_arc:
+  frame_01:
+    state: raven outside or near the window area, partially visible/reflected; ledge already exists
+    purpose: seed the bird, window, blinds, ledge, and distant figure
+  frame_02:
+    state: raven launches from or crosses the same ledge/window zone into the alley
+    bridge_from_previous: carries window/blinds/ledge from frame 01
+    bridge_to_next: raven trajectory ends near the ledge/perch position used in frame 03
+  frame_03:
+    state: raven is perched on the same wet stone ledge or adjacent masonry that was visible in frames 01-02
+    purpose: reveal stable geography, not introduce a new perch
+
+bridge_rules:
+  - Frame 2 must include at least one unmistakable element from frame 1 and one visual setup for frame 3.
+  - Frame 3 must make the frame 2 motion feel physically completed.
+  - Each frame must be autonomous as a strong CG, but also work as a continuity proof.
+  - If a later frame needs a prop, ledge, window, pipe, lamp, or silhouette, it must be present earlier.
+
+qa_fail_conditions:
+  - A perch appears in frame 3 that is absent from frame 1 or frame 2.
+  - The raven changes scale by more than a plausible camera-distance change.
+  - The window/blinds move to a different wall without a camera explanation.
+  - The distant figure or streetlamp teleports.
+  - Rain direction or reflections contradict the light setup.
+  - The scene becomes generic fantasy/cyberpunk instead of Swiss rain-noir.

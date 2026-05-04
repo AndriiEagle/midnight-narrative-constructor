@@ -1,0 +1,87 @@
+shotlist_id: ghost_shift_pilot_v1
+story_id: story-ghost-shift
+title: Хибний ранок / Нічна зміна CloseAI - Codex-only pilot
+pipeline: codex_only_no_openai_api
+source_file: src/lib/data/injectVerticalSlice.ts
+style_bible: image_factory/style_bible/master_style.yaml
+character_bible: image_factory/characters/anonymous_operator/character_bible.yaml
+prompt_pack: image_factory/prompts/ghost_shift_prompt_pack.md
+
+global_constraints:
+  orientation: vertical_9_16
+  lower_dialogue_safe_zone: lower_22_percent_quiet
+  no_openai_api: true
+  generation_surface: Codex built-in image generation only
+  text_policy: no readable text, no logos, no watermark
+  protagonist_policy: anonymous, non-identifiable, same tired operator presence
+
+shots:
+  - shot_id: ghost_shift_pilot_01
+    asset_id: ghost_shift_pilot_01_false_morning_kitchen
+    scene_id: scene-false-morning
+    beat_ids:
+      - beat-false-morning-coffee
+    title: False morning kitchen
+    asset_type: background_cg
+    objective: Establish the false calm of the apartment before the story becomes screen-mediated.
+    environment: small apartment kitchen at weak dawn
+    protagonist_visibility: hands or partial silhouette only
+    emotion: neutral with faint depression
+    final_path: image_factory/finals/ghost_shift_pilot_01_false_morning_kitchen.png
+
+  - shot_id: ghost_shift_pilot_02
+    asset_id: ghost_shift_pilot_02_true_crime_laptop
+    scene_id: scene-false-morning
+    beat_ids:
+      - beat-false-morning-youtube-video
+    title: Paused true-crime laptop
+    asset_type: background_cg
+    objective: Show routine becoming contaminated by documentary dread.
+    environment: same kitchen table with laptop and stale breakfast
+    protagonist_visibility: back or three-quarter silhouette, no identifiable face
+    emotion: low depression and screen-watch unease
+    final_path: image_factory/finals/ghost_shift_pilot_02_true_crime_laptop.png
+
+  - shot_id: ghost_shift_pilot_03
+    asset_id: ghost_shift_pilot_03_comment_cruelty
+    scene_id: scene-false-morning
+    beat_ids:
+      - beat-false-morning-youtube-comments
+      - beat-false-morning-punishment-thought
+    title: Comment column as public cruelty
+    asset_type: close_cg
+    objective: Make the comment feed feel like emotional numbness, not social media spectacle.
+    environment: laptop screen, coffee reflection, gray UI blocks
+    protagonist_visibility: partial reflection or hunched shoulder only
+    emotion: depression, isolation, moral nausea
+    final_path: image_factory/finals/ghost_shift_pilot_03_comment_cruelty.png
+
+  - shot_id: ghost_shift_pilot_04
+    asset_id: ghost_shift_pilot_04_night_dashboard
+    scene_id: scene-night-job
+    beat_ids:
+      - beat-false-morning-shift-transition
+      - beat-night-dashboard-login
+      - beat-night-pokrovsky-queue
+    title: Night shift dashboard
+    asset_type: background_cg
+    objective: Transform the same screen from leisure into employer and surveillance console.
+    environment: dark apartment workstation, abstract corporate empathy dashboard
+    protagonist_visibility: centered back silhouette
+    emotion: isolation, obedience, rising panic
+    final_path: image_factory/finals/ghost_shift_pilot_04_night_dashboard.png
+
+  - shot_id: ghost_shift_pilot_05
+    asset_id: ghost_shift_pilot_05_empathy_recording
+    scene_id: scene-night-job
+    beat_ids:
+      - beat-night-empathy-rec
+      - beat-night-first-log
+      - beat-night-second-log
+    title: Empathy recording check
+    asset_type: close_cg
+    objective: Show the system demanding humanity while measuring voice warmth.
+    environment: monitor glow, microphone, webcam or red recording dot
+    protagonist_visibility: profile/back three-quarter, mouth near mic, still not identifiable
+    emotion: panic, isolation, almost erased tenderness
+    final_path: image_factory/finals/ghost_shift_pilot_05_empathy_recording.png

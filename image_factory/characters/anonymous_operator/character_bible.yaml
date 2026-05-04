@@ -1,0 +1,65 @@
+character_id: anonymous_operator
+display_name: Anonymous Operator
+story_role: protagonist_operator
+pipeline: codex_only_no_openai_api
+
+identity_strategy:
+  lock_level: silhouette_and_presence
+  reason: The current vertical slice does not require a fixed face identity. Keeping the protagonist anonymous reduces identity drift risk and fits the story.
+  face_policy: avoid identifiable full-face views in pilot assets
+
+identity_core:
+  age_band: adult
+  gender_presentation: intentionally ambiguous unless story later requires specificity
+  face_visibility: obscured, reflected, cropped, or seen from behind
+  emotional_presence: tired, morally sickened, obedient but internally detached
+  posture:
+    - shoulders slightly collapsed
+    - stillness under pressure
+    - hands close to coffee, keyboard, trackpad, or microphone
+
+wardrobe:
+  default:
+    outer_layer: dark hoodie or dark soft jacket
+    color: graphite or washed black
+    accessories: none
+  invariants:
+    - no bright clothing
+    - no luxury styling
+    - no visible brand marks
+    - no extra jewelry unless story-approved
+
+environmental_anchors:
+  apartment:
+    - small kitchen or cramped workstation
+    - worn tabletop
+    - coffee cup
+    - laptop or monitor
+    - weak city light through window
+  night_shift:
+    - dark dashboard glow
+    - red queue or recording indicator
+    - microphone or webcam when empathy check is active
+
+visual_invariants:
+  - anonymous adult operator
+  - dark hoodie silhouette
+  - tired posture
+  - same small apartment continuity
+  - no clean heroic posing
+  - no expressive theatrical gestures
+
+forbidden_changes:
+  - visible celebrity-like face
+  - cheerful or cozy lifestyle mood
+  - fantasy costume
+  - police or military uniform
+  - corporate office relocation in pilot
+  - readable real names on screen
+
+reference_strategy:
+  canonical_refs: []
+  current_refs:
+    - image_factory/finals/ghost_shift_pilot_01_false_morning_kitchen.png
+    - image_factory/finals/ghost_shift_pilot_04_night_dashboard.png
+  note: Add approved canonical references here after human art gate.

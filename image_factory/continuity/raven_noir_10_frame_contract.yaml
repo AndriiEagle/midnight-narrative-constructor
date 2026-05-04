@@ -1,0 +1,216 @@
+contract_id: raven_noir_10_frame_physical_continuity_v1
+status: superseded
+superseded_by: image_factory/continuity/raven_alley_10f_contract.yaml
+superseded_reason: >
+  Replaced by raven_alley_10f because the final continuity pass keeps
+  D1 on the same east/right facade as W1/L1 and fixes the red thread route
+  as nail -> wall seam -> right curb -> D1 door crack -> H1.
+purpose: >
+  Lock the physical geography for a ten-frame Codex-only visual novel CG
+  sequence so later frames cannot hallucinate new ledges, doors, lamps,
+  windows, figures, pipes, perches, or color sources.
+
+pipeline:
+  generation: codex_built_in_image_generation_only
+  forbidden:
+    - openai_api
+    - image_api
+    - responses_api
+    - batch_api
+    - sdk_wrappers
+    - queue_runners
+    - openai_api_key
+
+scene:
+  asset_family: raven_noir_10_frame_sequence
+  format: widescreen_visual_novel_cg
+  aspect_ratio: "16:9"
+  location: fictional Elf town with Zurich old-town and Winterthur industrial restraint
+  time: night
+  weather: heavy rain
+  style: cinematic hyperreal dark Swiss rain-noir
+  palette_rule:
+    monochrome_ratio: "80-85%"
+    color_ratio: "15-20%"
+    color_policy: >
+      Color must be tiny, high-contrast, physically sourced, and story-relevant.
+      Accents should read as surgical marks inside a mostly graphite/silver image,
+      never as decorative color areas.
+
+fixed_location_map:
+  orientation:
+    camera_home: south alley mouth
+    view_axis: looking north into alley depth
+    right_wall: east wall, dominant foreground wall
+    left_wall: west wall, recessed service side
+    ground_plane: continuous wet cobblestone with shallow right-side gutter
+  right_wall_east:
+    W1:
+      type: dark rectangular window
+      position: foreground to midground on right wall
+      rule: visible from frame_01 onward, even if cropped or reflected
+    BL1:
+      type: exterior horizontal blinds on W1
+      position: directly over W1
+      rule: same slat direction, same wall, same window in all frames
+    S1:
+      type: wet stone ledge directly under W1
+      dimensions: shallow masonry sill, about 25-35 cm projection
+      function: only legal raven perch
+      rule: visible or clearly implied from frame_01 onward
+    BR1:
+      type: small rusted bracket under S1
+      function: tie point for red cord
+      rule: must remain attached to underside of S1
+    CORD1:
+      type: thin wet red cord
+      origin: tied to BR1 under S1
+      path: from BR1 down to cobbles, along GUTTER_R/PUDDLE_1, toward base of D1
+      visual_weight: hairline-thin clue, not a rope, cable, barrier, or dominant foreground slash
+      lower_ui_rule: must not clutter the lower 22 percent VN dialogue-safe zone
+      rule: present from frame_01; never appears as a new clue later
+    PIPE_R:
+      type: old drainpipe beside W1
+      rule: fixed on right wall, can be cropped but not relocated
+  left_wall_west:
+    D1:
+      type: recessed old service door
+      position: left wall midground, opposite and slightly deeper than W1
+      state_progression:
+        frames_01_to_07: closed
+        frame_08: narrow crack open
+        frames_09_to_10: camera may be just inside the opened threshold
+      rule: visible from frame_01 onward, no surprise door
+    GLASS_D1:
+      type: small cold blue wire-glass transom above D1
+      function: only legal blue light source before and during door opening
+      rule: visible from frame_01 as faint blue glint
+    PIPE_L:
+      type: vertical drainpipe near D1
+      rule: fixed on left wall
+  deep_alley:
+    LAMP1:
+      type: restrained old Swiss streetlamp
+      position: deep center-left on alley axis
+      function: yellow backlight and reflection ruler
+      rule: same position and same reflection direction across frames
+    FIG1:
+      type: small anonymous human silhouette
+      position_start: far alley under or near LAMP1
+      motion_rule: may walk slowly forward along alley axis only; no teleport or scale jump
+      identity_rule: no readable face, no celebrity likeness, no weapon, no new props
+  ground:
+    GUTTER_R:
+      type: shallow right-side drainage gutter
+      function: carries CORD1 and rainwater line
+      rule: continuous with the alley ground plane
+    PUDDLE_1:
+      type: shallow reflective puddle below W1, extending toward D1
+      function: continuity mirror for W1, S1, RAVEN1, LAMP1, FIG1
+      rule: reflections may distort but cannot introduce objects absent from the scene
+
+characters_and_living_elements:
+  RAVEN1:
+    type: realistic black raven
+    scale: plausible large raven, never monster-sized
+    legal_positions:
+      - on S1
+      - launching from S1
+      - crossing directly in front of W1/BL1
+      - reflected in W1 or PUDDLE_1 when the real bird remains locatable
+    forbidden:
+      - second raven
+      - flock
+      - fantasy monster bird
+      - new perch
+      - unseeded stone block
+  FIG1:
+    type: anonymous human silhouette
+    scale: small to medium-small depending on camera distance
+    path: LAMP1 axis to D1 threshold
+    forbidden:
+      - face reveal
+      - weapon
+      - readable clothing marks
+      - teleporting close-up
+
+color_sources:
+  amber:
+    source: narrow practical light behind BL1
+    meaning: hidden watcher / inhabited interior
+    max_area: tiny slits only, never a broad warm window glow
+  violet:
+    source: tiny catchlight in RAVEN1 eye
+    meaning: living witness
+    max_area: pinpoint only
+  red:
+    source: CORD1 only
+    meaning: physical clue tying S1 to D1
+    max_area: hairline only; lower frame must remain quiet
+  yellow:
+    source: LAMP1 and its wet cobblestone reflection
+    meaning: depth ruler and figure backlight
+    max_area: narrow reflection streak only
+  blue:
+    source: GLASS_D1 and later the narrow D1 door crack
+    meaning: threshold to hidden interior
+    max_area: small transom glint or thin door crack only
+
+camera_path:
+  frame_01: wide establishing map from south alley mouth
+  frame_02: slight pan and push toward right wall, raven launches from S1
+  frame_03: closer right-wall ledge view, raven returns to same S1
+  frame_04: tight W1/S1/reflection study
+  frame_05: low ground view along CORD1 and PUDDLE_1
+  frame_06: re-center down alley, FIG1 advances plausibly from LAMP1
+  frame_07: pan left to D1 threshold, W1/S1 still locatable
+  frame_08: push toward D1 as narrow blue crack opens
+  frame_09: physically justified reverse from just inside opened D1
+  frame_10: final threshold tableau with all anchors visible
+
+frame_requirements:
+  frame_01:
+    must_show: [W1, BL1, S1, BR1, CORD1, PIPE_R, D1, GLASS_D1, LAMP1, FIG1, GUTTER_R, PUDDLE_1, RAVEN1]
+    seeds: all_future_geometry
+  frame_02:
+    must_show: [W1, BL1, S1, BR1, CORD1, LAMP1, FIG1, D1, RAVEN1]
+    action: RAVEN1 launches from exact S1 ledge
+  frame_03:
+    must_show: [W1, BL1, S1, BR1, CORD1, PIPE_R, LAMP1, FIG1, RAVEN1]
+    action: RAVEN1 returns to exact S1 ledge
+  frame_04:
+    must_show: [W1, BL1, S1, CORD1, PUDDLE_1, LAMP1, FIG1, RAVEN1]
+    action: glass and puddle reflections prove same alley axis
+  frame_05:
+    must_show: [CORD1, GUTTER_R, PUDDLE_1, D1, GLASS_D1, W1, S1, RAVEN1, LAMP1, FIG1]
+    action: low ground view traces CORD1 from S1 zone toward D1
+  frame_06:
+    must_show: [FIG1, LAMP1, D1, GLASS_D1, CORD1, W1, S1, RAVEN1]
+    action: FIG1 advances only a few meters along alley axis
+  frame_07:
+    must_show: [D1, GLASS_D1, FIG1, CORD1, W1, S1, RAVEN1]
+    action: FIG1 reaches D1 latch while W1/S1 remain locatable
+  frame_08:
+    must_show: [D1, GLASS_D1, FIG1, CORD1, W1, BL1, S1, RAVEN1, LAMP1]
+    action: D1 opens only a narrow crack with blue light
+  frame_09:
+    must_show: [D1, CORD1, W1, BL1, S1, RAVEN1, LAMP1, FIG1, PUDDLE_1]
+    action: camera steps just inside opened D1 and looks back out
+  frame_10:
+    must_show: [D1, GLASS_D1, CORD1, BR1, W1, BL1, S1, PIPE_R, RAVEN1, LAMP1, FIG1, PUDDLE_1]
+    action: final continuity tableau, no collage logic
+
+qa_fail_conditions:
+  - S1 is absent or unclear in frame_01
+  - RAVEN1 lands on anything except S1
+  - D1 first appears after frame_01
+  - GLASS_D1 or blue light first appears after frame_01 without explanation
+  - CORD1 is not traceable from BR1 to D1
+  - LAMP1 changes position or reflection direction
+  - FIG1 teleports, changes scale implausibly, or gains a visible identity
+  - reflections introduce unseeded objects
+  - any color accent becomes a large decorative patch instead of a small story mark
+  - CORD1 becomes a thick rope, cable, barrier, or dominant lower-frame element
+  - lower 22 percent becomes too busy or bright for visual novel dialogue UI
+  - any new window, door, ledge, lamp, pipe, figure, stone block, perch, or light source appears
+  - scene drifts into cyberpunk neon, cute fantasy village, gore, weapons, readable text, logo, or watermark

@@ -1,0 +1,51 @@
+{
+  "pipeline": "codex_only_no_openai_api",
+  "policy": {
+    "generation_surface": "Codex built-in image generation/editing only",
+    "forbidden": [
+      "OpenAI Image API",
+      "Responses API image generation",
+      "Batch API",
+      "SDK image wrappers",
+      "automatic API queue runners"
+    ]
+  },
+  "items": [
+    {
+      "id": "revision-raven-sequence-v3",
+      "status": "generated_needs_user_review",
+      "reason": "User rejected the previous five image factory finals and wants the raven rain-noir reference style with stronger physical continuity.",
+      "source_references": [
+        "image_factory/reference_images/raven_sequence_v2/raven_sequence_v2_frame_01.png",
+        "image_factory/reference_images/raven_sequence_v2/raven_sequence_v2_frame_02.png",
+        "image_factory/reference_images/raven_sequence_v2/raven_sequence_v2_frame_03.png"
+      ],
+      "required_fix": "Generate a corrected 3-frame raven sequence where the window, blinds, wet stone ledge, alley axis, streetlamp, distant figure, raven scale, and rain direction are seeded from frame 1 and remain physically coherent through frames 2 and 3.",
+      "prompt_pack": "image_factory/prompts/raven_sequence_prompt_pack.md",
+      "continuity_contract": "image_factory/continuity/raven_sequence_contract.yaml",
+      "forbidden": [
+        "new perch appearing only in frame 3",
+        "teleporting window or streetlamp",
+        "generic cyberpunk/fantasy drift",
+        "OpenAI API usage"
+      ],
+      "generated_outputs": [
+        "image_factory/finals/raven_sequence_v3_frame_01.png",
+        "image_factory/finals/raven_sequence_v3_frame_02.png",
+        "image_factory/finals/raven_sequence_v3_frame_03.png"
+      ],
+      "codex_self_review": {
+        "passed": [
+          "frame 1 seeds the window, blinds, ledge, raven, alley, streetlamp, and distant figure",
+          "frame 2 keeps the same window/ledge zone and shows a physically plausible launch",
+          "frame 3 returns the raven to the same ledge/perch zone",
+          "raven scale changes are explainable by camera distance",
+          "no OpenAI API was used"
+        ],
+        "watch_items": [
+          "background metal stair/ladder silhouettes may read less Zurich old-town and more industrial noir; accept only if Winterthur/Elf industrial flavor is desired"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+contract_id: raven_alley_10f_physical_continuity_v2
+status: active
+purpose: >
+  Generate a ten-frame rain-noir visual novel sequence from one master
+  continuity plate. Each later frame must behave like an edit, crop, dolly,
+  or minor camera shift from the accepted previous frame, not as a new scene.
+
+pipeline:
+  generation: codex_built_in_image_generation_only
+  forbidden:
+    - openai_api
+    - image_api
+    - responses_api
+    - batch_api
+    - sdk_wrappers
+    - queue_runners
+    - openai_api_key
+
+v2_lessons_from_previous_attempt:
+  keep:
+    - dark Swiss rain-noir material quality
+    - wet stone and rain reflections
+    - raven realism and violet eye accent
+    - amber blind slits
+    - red clue path
+  fix:
+    - D1 must not change from arched service door to unrelated rectangular door
+    - S1 must stay a small distant wall lamp, not become a huge foreground set-piece
+    - T1 must be a thin thread, not a thick cable or decorative red line
+    - C1 must be a tiny flat blue shard, not a glowing jewel
+    - frame_09 reverse angle must not mirror or rebuild the alley
+
+fixed_master_plate:
+  view: south alley mouth looking north, slight right-wall bias
+  camera_rule: >
+    Frame 01 is the master plate. Frames 02-10 must preserve the same
+    architectural silhouette, vanishing point, wall order, object order, rain
+    direction, and light sources unless the shot is explicitly a close crop.
+  right_facade_east_order_from_camera:
+    - W1 dark rectangular window with exterior horizontal blinds B1
+    - L1 shallow wet stone ledge directly under W1
+    - P1 drainpipe immediately beside W1
+    - N1 small nail under L1
+    - T1 thin red thread dropping from N1 to the right curb
+    - D1 dark arched service door farther down the same right facade
+    - H1 low iron ring on D1
+  ground_order:
+    - right curb carries T1 toward D1
+    - center gutter stays wet and reflective
+    - C1 tiny flat blue glass shard near D1 threshold
+  left_wall_west:
+    S1:
+      type: small wall-mounted old Swiss streetlamp on bracket
+      role: distant yellow depth anchor only
+      scale_rule: never becomes a large foreground lamp in v2
+    F1:
+      type: small anonymous silhouette under or near S1
+      scale_rule: no close-up, no face, no weapon, no identity
+
+stable_objects:
+  W1:
+    rule: one hero window only; keep same position relative to L1 and P1
+  B1:
+    rule: exterior horizontal blinds; same slat angle in all frames
+  L1:
+    rule: exact raven perch; do not create any other ledge or stone block
+  P1:
+    rule: fixed vertical pipe next to W1
+  N1:
+    rule: small nail directly under L1
+  T1:
+    rule: very thin wet red thread; partially submerged or stuck to stone; not a thick cable
+    route: N1 -> down right-wall seam -> along right curb -> up D1 door crack -> around H1
+  D1:
+    rule: same dark arched service door in every non-close shot
+  H1:
+    rule: same low iron ring; no alternate handle
+  C1:
+    rule: tiny flat blue glass shard near D1; only a small glint, no glow
+  S1:
+    rule: small distant wall lamp on left wall; no foreground lamp close-up in v2
+  F1:
+    rule: distant silhouette only
+  R1:
+    rule: realistic black raven; one bird only; normal scale; allowed on L1 or in short flight near W1
+
+v2_camera_path:
+  frame_01: master plate, all anchors visible, raven perched on L1
+  frame_02: edit/crop of frame_01, push 15-20% closer to W1/L1
+  frame_03: edit of frame_02, raven half-opens wings on the same L1
+  frame_04: edit of frame_03, raven launches just off L1 while W1/L1 remain in frame
+  frame_05: small pan/dolly, raven crosses mid-alley; D1/H1 and S1 remain small anchors
+  frame_06: low crop from same set, T1 and C1 in wet gutter; no new architecture
+  frame_07: crop along same right facade to D1/H1; W1/L1 still visible or reflected behind
+  frame_08: tight D1/H1 close-up; preserve exact ring, thread, tiny C1
+  frame_09: do not reverse into a new street; instead use a shallow over-door angle looking back along same right curb
+  frame_10: return to master plate composition, raven back on exact L1
+
+hard_rejects:
+  - new hero window
+  - new door shape for D1
+  - large foreground lamp
+  - thick red cable
+  - glowing blue jewel
+  - raven on S1 bracket as a dominant close-up
+  - mirrored alley in frame_09
+  - extra raven
+  - readable text, signage, logo, watermark

@@ -1,0 +1,80 @@
+style_id: ghost_shift_ashen_realism_v1
+project: midnight-narrative-constructor
+pipeline: codex_only_no_openai_api
+source_story: Хибний ранок / Нічна зміна CloseAI
+
+medium:
+  asset_type: visual_novel_background_and_cg
+  rendering: cinematic photorealistic illustration
+  finish: polished psychological visual novel key art
+  orientation: vertical_9_16
+  target_use: TikTok-friendly VN scenes with dialogue textbox-safe framing
+
+core_style:
+  tone: ashen psychological realism
+  genre: psychological tech-noir drama
+  realism_level: realistic but art-directed
+  grain: subtle film grain
+  texture: restrained, no painterly mud
+  camera: quiet cinematic framing, strong foreground anchors, shallow depth when intimate
+
+palette:
+  base:
+    - ash gray
+    - cold beige
+    - graphite
+    - blue-gray monitor light
+  accents:
+    - stale amber coffee warmth
+    - restrained red recording indicator
+  forbidden:
+    - neon overload
+    - candy-color anime palette
+    - glossy mobile-game sparkle
+    - warm cozy lifestyle grading
+
+lighting:
+  morning:
+    key: weak cold daylight through apartment window
+    mood: false domestic calm, low emotional temperature
+  screen:
+    key: laptop or monitor glow
+    mood: surveillance-like stillness
+  night:
+    key: cold monitor light with low ambient room detail
+    accent: single red queue or recording light
+    mood: corporate isolation and measured humanity
+
+composition:
+  format: vertical
+  ui_safe_zone:
+    enabled: true
+    rule: keep lower 22 percent visually quieter and darker for future dialogue box
+  text_policy:
+    no_readable_text: true
+    no_logos: true
+    no_watermark: true
+    use_blurred_blocks_for_interfaces: true
+  character_policy:
+    protagonist_face: not identifiable unless explicitly approved later
+    silhouette_continuity: dark hoodie, tired posture, same apartment context
+    hands: visible only when anatomically safe
+
+artifact_prevention:
+  - no extra fingers
+  - no duplicate limbs
+  - no broken laptop geometry
+  - no readable UI labels
+  - no real platform branding
+  - no recognizable real people
+  - no gore
+  - no weapons
+  - no subtitles burned into the image
+  - no accidental signage
+
+qa_thresholds:
+  production_usability_min: 4
+  scene_accuracy_min: 4
+  style_consistency_min: 4
+  emotional_clarity_min: 4
+  hard_gate_fail_policy: reject_or_revision

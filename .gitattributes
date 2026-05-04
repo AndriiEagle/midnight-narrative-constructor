@@ -1,0 +1,11 @@
+image_factory/finals/*.png filter=lfs diff=lfs merge=lfs -text
+image_factory/finals/*.webp filter=lfs diff=lfs merge=lfs -text
+image_factory/finals/*.jpg filter=lfs diff=lfs merge=lfs -text
+image_factory/finals/*.jpeg filter=lfs diff=lfs merge=lfs -text
+image_factory/finals/*.tif filter=lfs diff=lfs merge=lfs -text
+image_factory/finals/*.tiff filter=lfs diff=lfs merge=lfs -text
+image_factory/reference_images/**/*.png filter=lfs diff=lfs merge=lfs -text
+image_factory/reference_images/**/*.webp filter=lfs diff=lfs merge=lfs -text
+image_factory/reference_images/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+image_factory/reference_images/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+output/vn_cg/*.png filter=lfs diff=lfs merge=lfs -text
