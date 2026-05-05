@@ -15,3 +15,7 @@ Ultra-consistent storyboard sketches for a dark atmospheric visual novel:
 7. `scene-07-resolution.svg` — balanced final frame and symbolic closure.
 
 All files are lightweight SVG for easy preview directly in GitHub.
+
+
+## One-click gallery
+- Open `assets/sketches/index.html` in GitHub to see all scenes in one screen.
