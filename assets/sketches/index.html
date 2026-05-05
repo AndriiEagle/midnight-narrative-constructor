@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Midnight Narrative — Sketch Gallery</title>
+  <style>
+    :root { --bg:#05060a; --card:#11131a; --txt:#e8ebf4; --muted:#93a0bd; --line:#1e2535; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,Segoe UI,Arial,sans-serif; background:var(--bg); color:var(--txt); }
+    .wrap { max-width:1280px; margin:0 auto; padding:20px; }
+    h1 { margin:0 0 8px; font-size:28px; }
+    p { margin:0 0 18px; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+    .card a { display:block; text-decoration:none; color:inherit; }
+    .thumb { aspect-ratio:16/9; background:#000; display:block; width:100%; }
+    .meta { padding:10px 12px; font-size:14px; border-top:1px solid var(--line); }
+    .name { font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Visual Novel Sketches — One-Click Gallery</h1>
+    <p>Відкрий цей файл у GitHub — усі 7 сцен на одному екрані. Клік по картці відкриває оригінальний SVG.</p>
+    <div class="grid">
+      <article class="card"><a href="scene-01-awakening.svg"><img class="thumb" loading="lazy" src="scene-01-awakening.svg" alt="Scene 01 Awakening"/><div class="meta"><div class="name">01 — Awakening</div></div></a></article>
+      <article class="card"><a href="scene-02-threshold.svg"><img class="thumb" loading="lazy" src="scene-02-threshold.svg" alt="Scene 02 Threshold"/><div class="meta"><div class="name">02 — Threshold</div></div></a></article>
+      <article class="card"><a href="scene-03-contact.svg"><img class="thumb" loading="lazy" src="scene-03-contact.svg" alt="Scene 03 Contact"/><div class="meta"><div class="name">03 — Contact</div></div></a></article>
+      <article class="card"><a href="scene-04-fracture.svg"><img class="thumb" loading="lazy" src="scene-04-fracture.svg" alt="Scene 04 Fracture"/><div class="meta"><div class="name">04 — Fracture</div></div></a></article>
+      <article class="card"><a href="scene-05-pursuit.svg"><img class="thumb" loading="lazy" src="scene-05-pursuit.svg" alt="Scene 05 Pursuit"/><div class="meta"><div class="name">05 — Pursuit</div></div></a></article>
+      <article class="card"><a href="scene-06-revelation.svg"><img class="thumb" loading="lazy" src="scene-06-revelation.svg" alt="Scene 06 Revelation"/><div class="meta"><div class="name">06 — Revelation</div></div></a></article>
+      <article class="card"><a href="scene-07-resolution.svg"><img class="thumb" loading="lazy" src="scene-07-resolution.svg" alt="Scene 07 Resolution"/><div class="meta"><div class="name">07 — Resolution</div></div></a></article>
+    </div>
+  </div>
+</body>
+</html>
